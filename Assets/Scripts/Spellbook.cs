@@ -19,18 +19,18 @@ public class Spellbook : MonoBehaviour {
     {
         return Religion_3_WaterToWine();
     }
-    public bool CastMe(int index)
+    public void CastMe(int index)
     { 
         switch (index)
         {
 
-            case 0: return Religion_1_HolyLight();
-            case 1: return Religion_2_Heal();
-            case 2: return Religion_3_WaterToWine();
-            case 3: return Religion_4_CreateFood();
-            case 4: return Religion_5_Resurrection();
-            case 5:
-            case 6:
+            case 0: Religion_1_HolyLight(); break;
+            case 1: Religion_2_Heal(); break;
+            case 2: Religion_3_WaterToWine(); break;
+            case 3: Religion_4_CreateFood(); break;
+            case 4: Religion_5_Resurrection(); break;
+            case 5: Elemental_1_Warmth(); break;
+            case 6: Elemental_2_Regeneration(); break;
             case 7:
             case 8:
             case 9:
@@ -50,7 +50,7 @@ public class Spellbook : MonoBehaviour {
             case 23:
             case 24:
             case 25:
-            default: Debug.Log(string.Format("Index out of range: {0}", index)); return false;
+            default: Debug.Log(string.Format("Index out of range debug message: {0}", index)); break;
         }
     }
 
@@ -82,6 +82,20 @@ public class Spellbook : MonoBehaviour {
         return true;
     }
     #endregion
+
+    #region Elemental
+    public static bool Elemental_1_Warmth()
+    {
+        Debug.Log("Casts Elemental_1_Warmth: You feel all warm and tingly...");
+        return true;
+    }
+    public static bool Elemental_2_Regeneration()
+    {
+        Debug.Log("Casts Elemental_2_Regeneration: You begin to regenerate... ");
+        return true;
+    }
+    #endregion
+
 
     public static void DebugMe(int index)
     {

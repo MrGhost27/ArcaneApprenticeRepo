@@ -65,6 +65,7 @@ public class ResearchTree : MonoBehaviour {
 
     void learnSchool()
     {
+        Debug.Log("Learn Function Called");
         #region dynamicAttempt
         /*
         Vector3 firstPosition = this.transform.position;
@@ -108,6 +109,7 @@ public class ResearchTree : MonoBehaviour {
         // Check here whether it's learnt or not.
         // This function shouldn't ever be called
         Debug.Assert(false);
-        return FindObjectOfType<Spellbook>().CastMe(spellIndex);
+        FindObjectOfType<Spellbook>().CastMe(spellIndex);
+        return true;
     }
 }
