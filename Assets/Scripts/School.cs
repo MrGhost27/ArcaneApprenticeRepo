@@ -9,7 +9,6 @@ public class School : MonoBehaviour {
     [SerializeField] public List<GameObject> Buttons;
     //[SerializeField] public List<GameObject> Techniques;
     [SerializeField] List<int> spellIndexes;
-    [SerializeField] GameObject Technique;
     [SerializeField] int knownTechniques = 0;
 
     [SerializeField] GameObject SM;
@@ -20,14 +19,28 @@ public class School : MonoBehaviour {
 
     public bool learnTechnique()
     {
-        Buttons[knownTechniques].SetActive(true);
-        Button b = Buttons[knownTechniques].GetComponent<Button>();
-        b.onClick.AddListener(delegate { Spellbook.DebugF(); });
+        
+        if (!Buttons[knownTechniques].activeSelf)
+        {
+            Buttons[knownTechniques].SetActive(true);
+            Button b = Buttons[knownTechniques].GetComponent<Button>();
 
-        knownTechniques++;
-        if (knownTechniques > Buttons.Count)
-            knownTechniques = Buttons.Count;
-        return true;
+            int parameter = spellIndexes[knownTechniques];
+
+            //b.onClick.AddListener(delegate { Spellbook.DebugMe(parameter); });
+
+            b.onClick.AddListener(delegate { SM.GetComponent<Spellbook>().CastMe(parameter); });
+
+            knownTechniques++;
+            if (knownTechniques >= Buttons.Count)
+                knownTechniques = Buttons.Count - 1;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Already Learnt Everything");
+            return false;
+        }
     }
 
     // Update is called once per frame
