@@ -7,7 +7,19 @@ public class Spellbook : MonoBehaviour {
     [SerializeField] private static int maxSchools = 5;
     [SerializeField] private static int maxTechniquesPerSchool = 5;
 
-    public static bool CastMe(int index)
+    public bool castOne()
+    {
+        return Religion_1_HolyLight();
+    }
+    public bool castTwo()
+    {
+        return Religion_2_Heal();
+    }
+    public bool castThree()
+    {
+        return Religion_3_WaterToWine();
+    }
+    public bool CastMe(int index)
     { 
         switch (index)
         {
@@ -71,8 +83,12 @@ public class Spellbook : MonoBehaviour {
     }
     #endregion
 
-    public static void DebugMe()
+    public static void DebugMe(int index)
     {
-        Debug.Log("Delegate Function Called");
+        Debug.Log("Delegate Function Called: " + index);
+    }
+    public static void DebugF()
+    {
+        Debug.Log("Delegate Function Called.");
     }
 }

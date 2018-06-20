@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ambition : MonoBehaviour {
 
-    [SerializeField] private int strengthBonus;
-    [SerializeField] private int willBonus;
-    [SerializeField] private int intelligenceBonus;
-    [SerializeField] private string ambitionTitle;
+    [SerializeField] int strengthBonus;
+    [SerializeField] int willBonus;
+    [SerializeField] int intelligenceBonus;
+    [SerializeField] string ambitionTitle;
+    [SerializeField] GameObject UI_panel;
 
     // Use this for initialization
     void Start () {
         GetStats();
+        AddAmbitionToPanel();
 	}
 	
 	// Update is called once per frame
@@ -45,5 +48,10 @@ public class Ambition : MonoBehaviour {
         intelligenceBonus = Random.Range(10, 25);
 
         Debug.Log(string.Format("stats generated: {0}, {1}, {2}", strengthBonus, willBonus, intelligenceBonus));
+    }
+
+    void AddAmbitionToPanel()
+    {
+
     }
 }
